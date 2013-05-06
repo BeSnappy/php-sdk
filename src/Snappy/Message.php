@@ -143,7 +143,7 @@ class Message {
 	{
 		if (is_null($name)) $name = $address;
 
-		$this->{$type}[] = compact('name', 'address');
+		$this->{$type}[$name] = $address;
 
 		return $this;
 	}
