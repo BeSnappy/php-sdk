@@ -48,9 +48,21 @@ class Client {
 	 */
 	protected function send(Request $request, $json = true)
 	{
+		$request = $this->auth->addCredentialsToRequest($request);
+
 		$response = $request->send();
 
 		return $json ? json_decode($response->getBody(), true) : $response->getBody();
+	}
+
+	/**
+	 * Get a new HTTP client instance.
+	 *
+	 * @return \Guzzle\Http\Client
+	 */
+	protected function getHttp()
+	{
+		return new \Guzzle\Http\Client;
 	}
 
 }
