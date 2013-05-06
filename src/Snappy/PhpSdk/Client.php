@@ -115,7 +115,7 @@ class Client {
 	{
 		$request = $this->getHttp()->post(static::URL.'note', null, $this->buildMessagePayload($message));
 
-		$this->sendPlain($request);
+		return $this->sendPlain($request);
 	}
 
 	/**
