@@ -1,0 +1,21 @@
+{
+    "name": "snappy/php-sdk",
+    "description": "PHP SDK for the BeSnappy.com",
+    "authors": [
+        {
+            "name": "UserScape",
+            "email": "it@userscape.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "guzzle/guzzle": "3.x",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Snappy\\PhpSdk": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
