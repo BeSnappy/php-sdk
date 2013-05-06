@@ -41,7 +41,7 @@ To send a message to your Snappy account, create a new `Message` instance, and u
 	$message->subject = 'Hello World';
 	$message->message = 'This is my message!';
 
-	$client->sendMessage($message);
+	$nonce = $client->sendMessage($message);
 
 To send an outgoing message, a `staffId` must be specified, as well as the recipient address:
 
@@ -53,4 +53,4 @@ To send an outgoing message, a `staffId` must be specified, as well as the recip
 	$message->subject = 'Hello World';
 	$message->message = 'This is my message!';
 
-	$client->sendMessage($message);
+	$nonce = $client->sendMessage($message);
