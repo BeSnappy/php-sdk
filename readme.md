@@ -54,3 +54,7 @@ To send an outgoing message, a `staffId` must be specified, as well as the recip
 	$message->message = 'This is my message!';
 
 	$nonce = $client->sendMessage($message);
+
+If you are attaching a message to an existing thread, add the ticket "nonce" to the message:
+
+	$message->ticketId = $nonce;
