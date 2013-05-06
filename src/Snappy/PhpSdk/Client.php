@@ -109,7 +109,7 @@ class Client {
 	 * Send a new message via your Snappy account.
 	 *
 	 * @param  \Snappy\PhpSdk\Message  $message
-	 * @return void
+	 * @return string
 	 */
 	public function sendMessage(Message $message)
 	{
