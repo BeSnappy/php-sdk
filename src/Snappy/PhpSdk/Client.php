@@ -24,7 +24,7 @@ class Client {
 	 * @param  \Snappy\PhpSdk\AuthInterface  $auth
 	 * @return void
 	 */
-	public function __construct(AuthInterface $uath)
+	public function __construct(AuthInterface $auth)
 	{
 		$this->auth = $auth;
 	}
