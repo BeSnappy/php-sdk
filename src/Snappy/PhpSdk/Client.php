@@ -132,16 +132,16 @@ class Client {
 			$payload['mailbox_id'] = $message->mailboxId;
 		}
 
-		if (isset($note->staffId)) {
-			$payload['staff_id'] = $note->staffId;
+		if (isset($message->staffId)) {
+			$payload['staff_id'] = $message->staffId;
 		}
 
-		$payload['id'] = $note->ticketId;
-		$payload['subject'] = (string) $note->subject;
-		$payload['message'] = $note->message;
+		$payload['id'] = $message->ticketId;
+		$payload['subject'] = (string) $message->subject;
+		$payload['message'] = $message->message;
 		$payload['attachments'] = array();
-		$payload['tags'] = $note->tags;
-		$payload['scope'] = $note->scope ?: 'public';
+		$payload['tags'] = $message->tags;
+		$payload['scope'] = $message->scope ?: 'public';
 
 		if (isset($message->from)) {
 			$payload['from'][] = array('name' => $message->from['name'], 'address' => $message->from['address']);			
