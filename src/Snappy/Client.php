@@ -1,4 +1,4 @@
-<?php namespace Snappy\PhpSdk;
+<?php namespace Snappy;
 
 use Guzzle\Http\Message\Request;
 
@@ -7,7 +7,7 @@ class Client {
 	/**
 	 * The auth implementation.
 	 *
-	 * @var \Snappy\PhpSdk\AuthInterface
+	 * @var \Snappy\AuthInterface
 	 */
 	protected $auth;
 
@@ -21,7 +21,7 @@ class Client {
 	/**
 	 * Create a new Snappy Client instance.
 	 *
-	 * @param  \Snappy\PhpSdk\AuthInterface  $auth
+	 * @param  \Snappy\AuthInterface  $auth
 	 * @return void
 	 */
 	public function __construct(AuthInterface $auth)
@@ -108,7 +108,7 @@ class Client {
 	/**
 	 * Send a new message via your Snappy account.
 	 *
-	 * @param  \Snappy\PhpSdk\Message  $message
+	 * @param  \Snappy\Message  $message
 	 * @return string
 	 */
 	public function sendMessage(Message $message)
@@ -121,7 +121,7 @@ class Client {
 	/**
 	 * Build the JSON payload for sending a note to the API.
 	 *
-	 * @param  \Snappy\PhpSdk\Message  $message
+	 * @param  \Snappy\Message  $message
 	 * @return string
 	 */
 	protected function buildMessagePayload(Message $message)

@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Snappy\\PhpSdk": "src/"
+            "Snappy": "src/"
         }
     },
     "extra": {

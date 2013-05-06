@@ -8,11 +8,11 @@ The SDK should be installed via [Composer](http://getcomposer.org). Simply add t
 
 First, create a new authentication provider:
 
-	$auth = new Snappy\PhpSdk\UserPassAuthentication('user', 'pass');
+	$auth = new Snappy\UserPassAuthentication('user', 'pass');
 
 Next, create an SDK client instance:
 
-	$client = new Snappy\PhpSdk\Client($auth);
+	$client = new Snappy\Client($auth);
 
 Now you're ready to start retrieving information from Snappy!
 
@@ -34,7 +34,7 @@ Now you're ready to start retrieving information from Snappy!
 
 To send a message to your Snappy account, create a new `Message` instance, and use the `sendMessage` method on the client:
 
-	$message = new Snappy\PhpSdk\Message;
+	$message = new Snappy\Message;
 
 	$message->mailboxId = 3;
 	$message->setFrom('foo@bar.com', 'John Smith');
@@ -45,7 +45,7 @@ To send a message to your Snappy account, create a new `Message` instance, and u
 
 To send an outgoing message, a `staffId` must be specified, as well as the recipient address:
 
-	$message = new Snappy\PhpSdk\Message;
+	$message = new Snappy\Message;
 
 	$message->mailboxId = 3;
 	$message->staffId = 3;
