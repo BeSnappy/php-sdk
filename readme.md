@@ -42,3 +42,15 @@ To send a message to your Snappy account, create a new `Message` instance, and u
 	$message->message = 'This is my message!';
 
 	$client->sendMessage($message);
+
+To send an outgoing message, a `staffId` must be specified, as well as the recipient address:
+
+	$message = new Snappy\PhpSdk\Message;
+
+	$message->mailboxId = 3;
+	$message->staffId = 3;
+	$message->addTo('foo@bar.com', 'John Smith');
+	$message->subject = 'Hello World';
+	$message->message = 'This is my message!';
+
+	$client->sendMessage($message);
