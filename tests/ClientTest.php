@@ -6,7 +6,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 
 	public function testSendMessageCreatesProperPayload()
 	{
-		$client = $this->getMock('Snappy\Client', array('getHttp', 'sendPlain'), array($auth = m::mock('Snappy\AuthInterface')));
+		$client = $this->getMock('SnappySdk\Client', array('getHttp', 'sendPlain'), array($auth = m::mock('SnappySdk\AuthInterface')));
 		$client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle = m::mock('StdClass')));
 		$client->expects($this->once())->method('sendPlain');
 
@@ -22,7 +22,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 			'to' => array(array('name' => 'Taylor Otwell', 'address' => 'taylor@userscape.com')),
 		)))->andReturn(m::mock('Guzzle\Http\Message\Request'));
 
-		$message = new Snappy\Message;
+		$message = new SnappySdk\Message;
 		$message->mailboxId = 1;
 		$message->staffId = 2;
 		$message->subject = 'Subject';

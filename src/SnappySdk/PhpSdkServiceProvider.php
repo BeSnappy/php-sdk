@@ -1,4 +1,4 @@
-<?php namespace Snappy;
+<?php namespace SnappySdk;
 
 use Illuminate\Support\ServiceProvider;
 

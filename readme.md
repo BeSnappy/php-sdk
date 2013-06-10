@@ -29,6 +29,8 @@ Now you're ready to start retrieving information from Snappy!
 - getTicketNotes($ticketId)
 - updateTicketTags($ticketId, $tags)
 - sendMessage($message)
+- getWallPost($accountId, $after = 0)
+- postToWall($accountId, $content, $type = 'post', $tags = array(), $ticket = null, $note = null)
 
 ## Sending Messages
 

@@ -1,4 +1,4 @@
-<?php namespace Snappy;
+<?php namespace SnappySdk;
 
 use Guzzle\Http\Message\Request;
 
@@ -174,6 +174,36 @@ class Client {
 	}
 
 	/**
+	 * Get the wall posts for the given account.
+	 *
+	 * @param  int    $accountId
+	 * @param  int    $after
+	 * @return array
+	 */
+	public function getWallPosts($accountId, $after = 0)
+	{
+		return $this->send($this->getHttp()->get(static::URL.'account/'.$accountId.'/wall?after='.$after));
+	}
+
+	/**
+	 * Get the wall posts for the given account.
+	 *
+	 * @param  int     $accountId
+	 * @param  string  $content
+	 * @param  string  $type
+	 * @param  array   $tags
+	 * @param  int     $ticket
+	 * @param  int     $ntoe
+	 * @return array
+	 */
+	public function postToWall($accountId, $content, $type = 'post', array $tags = array(), $ticket = null, $note = null)
+	{
+		$payload = json_encode(compact('content', 'type', 'tags', 'ticket', 'note'));
+
+		return $this->sendPlain($this->getHttp()->post(static::URL.'account/'.$accountId.'/wall', null, $payload));
+	}
+
+	/**
 	 * Send the request and return the JSON payload as an array.
 	 *
 	 * @param  \Guzzle\Http\Message\Request  $request
@@ -205,9 +235,11 @@ class Client {
 	 *
 	 * @return \Guzzle\Http\Client
 	 */
-	protected function getHttp()
+	public function getHttp()
 	{
-		return new \Guzzle\Http\Client;
+		$client = new \Guzzle\Http\Client;
+		$client->setSslVerification(false, false, false);
+		return $client;
 	}
 
 }

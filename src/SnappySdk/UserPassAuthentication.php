@@ -1,4 +1,4 @@
-<?php namespace Snappy;
+<?php namespace SnappySdk;
 
 use Guzzle\Http\Message\Request;
 
