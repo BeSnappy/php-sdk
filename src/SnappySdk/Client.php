@@ -16,7 +16,7 @@ class Client {
 	 *
 	 * @var string
 	 */
-	const URL = 'https://app.besnappy.com/api/v1/';
+	protected $url = 'https://app.besnappy.com/api/v1/';
 
 	/**
 	 * Create a new Snappy Client instance.
@@ -24,9 +24,11 @@ class Client {
 	 * @param  \Snappy\AuthInterface  $auth
 	 * @return void
 	 */
-	public function __construct(AuthInterface $auth)
+	public function __construct(AuthInterface $auth, $url = null)
 	{
 		$this->auth = $auth;
+
+		if ( ! is_null($url)) $this->url = $url;
 	}
 
 	/**
@@ -36,7 +38,7 @@ class Client {
 	 */
 	public function getAccounts()
 	{
-		return $this->send($this->getHttp()->get(static::URL.'accounts'));
+		return $this->send($this->getHttp()->get($this->url.'accounts'));
 	}
 
 	/**
@@ -47,7 +49,7 @@ class Client {
 	 */
 	public function getMailboxes($accountId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'account/'.$accountId.'/mailboxes'));
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/mailboxes'));
 	}
 
 	/**
@@ -58,7 +60,7 @@ class Client {
 	 */
 	public function getDocuments($accountId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'account/'.$accountId.'/documents'));	
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/documents'));	
 	}
 
 	/**
@@ -69,7 +71,7 @@ class Client {
 	 */
 	public function getStaff($accountId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'account/'.$accountId.'/staff'));
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/staff'));
 	}
 
 	/**
@@ -80,7 +82,7 @@ class Client {
 	 */
 	public function getWaitingTickets($mailboxId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'mailbox/'.$mailboxId.'/tickets'));
+		return $this->send($this->getHttp()->get($this->url.'mailbox/'.$mailboxId.'/tickets'));
 	}
 
 	/**
@@ -91,7 +93,7 @@ class Client {
 	 */
 	public function getTicketDetails($ticketId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'ticket/'.$ticketId));
+		return $this->send($this->getHttp()->get($this->url.'ticket/'.$ticketId));
 	}
 
 	/**
@@ -102,7 +104,7 @@ class Client {
 	 */
 	public function getTicketNotes($ticketId)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'ticket/'.$ticketId.'/notes'));	
+		return $this->send($this->getHttp()->get($this->url.'ticket/'.$ticketId.'/notes'));	
 	}
 
 	/**
@@ -113,7 +115,7 @@ class Client {
 	 */
 	public function sendMessage(Message $message)
 	{
-		$request = $this->getHttp()->post(static::URL.'note', null, $this->buildMessagePayload($message));
+		$request = $this->getHttp()->post($this->url.'note', null, $this->buildMessagePayload($message));
 
 		return $this->sendPlain($request);
 	}
@@ -166,7 +168,7 @@ class Client {
 	 */
 	public function updateTicketTags($ticketId, array $tags)
 	{
-		$request = $this->getHttp()->post(static::URL.'ticket/'.$ticketId.'/tags');
+		$request = $this->getHttp()->post($this->url.'ticket/'.$ticketId.'/tags');
 
 		$request->addPostFields(array('tags' => json_encode($tags)));
 
@@ -182,7 +184,7 @@ class Client {
 	 */
 	public function getWallPosts($accountId, $after = 0)
 	{
-		return $this->send($this->getHttp()->get(static::URL.'account/'.$accountId.'/wall?after='.$after));
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/wall?after='.$after));
 	}
 
 	/**
@@ -200,7 +202,7 @@ class Client {
 	{
 		$payload = json_encode(compact('content', 'type', 'tags', 'ticket', 'note'));
 
-		return $this->sendPlain($this->getHttp()->post(static::URL.'account/'.$accountId.'/wall', null, $payload));
+		return $this->sendPlain($this->getHttp()->post($this->url.'account/'.$accountId.'/wall', null, $payload));
 	}
 
 	/**
