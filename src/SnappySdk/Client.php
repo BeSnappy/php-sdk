@@ -146,13 +146,21 @@ class Client {
 		$payload['scope'] = $message->scope ?: 'public';
 
 		if (isset($message->from)) {
-			$payload['from'][] = array('name' => $message->from['name'], 'address' => $message->from['address']);			
+			$payload['from'][] = array('name' => $message->from['name'], 'address' => $address = $message->from['address']);
+			if (filter_var($address, FILTER_VALIDATE_EMAIL) === false)
+			{
+				throw new \InvalidArgumentException("Invalid e-mail address [$address].");
+			}
 		}
 
 		foreach (array('to', 'bcc', 'cc') as $type) {
 			foreach ($message->{$type} as $name => $address) {
 				if (is_numeric($name)) $name = $address;
 				$payload[$type][] = compact('name', 'address');
+				if (filter_var($address, FILTER_VALIDATE_EMAIL) === false)
+				{
+					throw new \InvalidArgumentException("Invalid e-mail address [$address].");
+				}
 			}
 		}
 

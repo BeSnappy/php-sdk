@@ -33,4 +33,22 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 		$client->sendMessage($message);
 	}
 
+
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testClientThrowsExceptionOnInvalidEmails()
+	{
+		$client = new SnappySdk\Client(m::mock('SnappySdk\AuthInterface'));
+		$message = new SnappySdk\Message;
+		$message->mailboxId = 1;
+		$message->staffId = 2;
+		$message->subject = 'Subject';
+		$message->message = 'Message';
+		$message->tags = array('foo', 'bar');
+		$message->addTo('?????????? ....', 'Taylor Otwell');
+
+		$client->sendMessage($message);
+	}
+
 }
