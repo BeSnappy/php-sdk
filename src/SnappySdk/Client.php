@@ -214,6 +214,66 @@ class Client {
 	}
 
 	/**
+	 * Comment on a wall post.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $postId
+	 * @param  string  $comment
+	 * @return array
+	 */
+	public function commentOnWallPost($accountId, $postId, $comment)
+	{
+		$request = $this->getHttp()->post($this->url.'account/'.$accountId.'/wall/'.$postId.'/comment');
+
+		$request->addPostFields(array('comment' => $comment));
+
+		$this->sendPlain($request);
+	}
+
+	/**
+	 * Delete a wall comment.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $postId
+	 * @param  int  $commentId
+	 * @return array
+	 */
+	public function deleteWallComment($accountId, $postId, $commentId)
+	{
+		$request = $this->getHttp()->delete($this->url.'account/'.$accountId.'/wall/'.$postId.'/comment/'.$commentId);
+
+		$this->sendPlain($request);
+	}
+
+	/**
+	 * Comment on a wall post.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $postId
+	 * @return array
+	 */
+	public function likeWallPost($accountId, $postId)
+	{
+		$request = $this->getHttp()->post($this->url.'account/'.$accountId.'/wall/'.$postId.'/like');
+
+		$this->sendPlain($request);
+	}
+
+	/**
+	 * Unlike a wall comment.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $postId
+	 * @return array
+	 */
+	public function unlikeWallPost($accountId, $postId)
+	{
+		$request = $this->getHttp()->delete($this->url.'account/'.$accountId.'/wall/'.$postId.'/like');
+
+		$this->sendPlain($request);
+	}
+
+	/**
 	 * Send the request and return the JSON payload as an array.
 	 *
 	 * @param  \Guzzle\Http\Message\Request  $request
@@ -248,7 +308,9 @@ class Client {
 	public function getHttp()
 	{
 		$client = new \Guzzle\Http\Client;
+
 		$client->setSslVerification(false, false, false);
+
 		return $client;
 	}
 
