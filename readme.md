@@ -31,6 +31,10 @@ Now you're ready to start retrieving information from Snappy!
 - sendMessage($message)
 - getWallPost($accountId, $after = 0)
 - postToWall($accountId, $content, $type = 'post', $tags = array(), $ticket = null, $note = null)
+- commentOnWallPost($accountId, $postId, $comment)
+- deleteWallComment($accountId, $postId, $commentId)
+- likeWallPost($accountId, $postId)
+- unlikeWallPost($accountId, $postId)
 
 ## Sending Messages
 
