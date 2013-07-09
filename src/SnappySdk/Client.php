@@ -214,6 +214,20 @@ class Client {
 	}
 
 	/**
+	 * Get the wall posts for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $postId
+	 * @return array
+	 */
+	public function deleteWallPost($accountId, $postId)
+	{
+		$request = $this->getHttp()->delete($this->url.'account/'.$accountId.'/wall/'.$postId);
+
+		$this->sendPlain($request);
+	}
+
+	/**
 	 * Comment on a wall post.
 	 *
 	 * @param  int  $accountId
