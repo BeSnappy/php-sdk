@@ -145,6 +145,11 @@ class Client {
 		$payload['tags'] = $message->tags;
 		$payload['scope'] = $message->scope ?: 'public';
 
+		if ($message->system)
+		{
+			$payload['system'] = true;
+		}
+
 		if (isset($message->from)) {
 			$payload['from'][] = array('name' => $message->from['name'], 'address' => $address = $message->from['address']);
 			if (filter_var($address, FILTER_VALIDATE_EMAIL) === false)

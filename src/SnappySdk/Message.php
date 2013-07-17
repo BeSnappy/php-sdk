@@ -80,6 +80,11 @@ class Message {
 	public $tags = array();
 
 	/**
+	 * Indicates if the message is a "system" message.
+	 */
+	public $system = false;
+
+	/**
 	 * Set the sender of the message.
 	 *
 	 * @param  string  $name
