@@ -111,11 +111,17 @@ class Client {
 	 * Send a new message via your Snappy account.
 	 *
 	 * @param  \Snappy\Message  $message
+	 * @param  array  $headers
 	 * @return string
 	 */
-	public function sendMessage(Message $message)
+	public function sendMessage(Message $message, array $headers = array())
 	{
 		$request = $this->getHttp()->post($this->url.'note', null, $this->buildMessagePayload($message));
+
+		foreach ($headers as $key => $value)
+		{
+			$request->setHeader($key, $value);
+		}
 
 		return $this->sendPlain($request);
 	}
