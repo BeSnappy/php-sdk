@@ -123,7 +123,7 @@ class Client {
 			$request->setHeader($key, $value);
 		}
 
-		return $this->sendPlain($request);
+		return (string) $this->sendPlain($request);
 	}
 
 	/**
@@ -322,7 +322,7 @@ class Client {
 	 */
 	protected function sendPlain(Request $request)
 	{
-		return $this->send($request, false);
+		return (string) $this->send($request, false);
 	}
 
 	/**
