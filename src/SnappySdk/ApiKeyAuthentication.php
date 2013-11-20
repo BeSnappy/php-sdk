@@ -2,7 +2,7 @@
 
 use Guzzle\Http\Message\Request;
 
-class BasicAuthentication implements AuthInterface {
+class ApiKeyAuthentication implements AuthInterface {
 
 	/**
 	 * The API key, available via the You > Your Settings menu in Snappy.
@@ -16,7 +16,7 @@ class BasicAuthentication implements AuthInterface {
 	 *
 	 * @param  string  $key
 	 * @return void
-	 */ 
+	 */
 	public function __construct($key)
 	{
 		$this->key = $key;
