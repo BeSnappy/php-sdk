@@ -7,7 +7,7 @@ class Client {
 	/**
 	 * The auth implementation.
 	 *
-	 * @var \Snappy\AuthInterface
+	 * @var \SnappySdk\AuthInterface
 	 */
 	protected $auth;
 
@@ -21,7 +21,7 @@ class Client {
 	/**
 	 * Create a new Snappy Client instance.
 	 *
-	 * @param  \Snappy\AuthInterface  $auth
+	 * @param  \SnappySdk\AuthInterface  $auth
 	 * @return void
 	 */
 	public function __construct(AuthInterface $auth, $url = null)

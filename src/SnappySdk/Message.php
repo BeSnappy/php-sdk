@@ -89,7 +89,7 @@ class Message {
 	 *
 	 * @param  string  $name
 	 * @param  string  $address
-	 * @return \Snappy\Message
+	 * @return \SnappySdk\Message
 	 */
 	public function setFrom($address, $name = null)
 	{
@@ -105,7 +105,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Snappy\Message
+	 * @return \SnappySdk\Message
 	 */
 	public function addTo($address, $name = null)
 	{
@@ -129,7 +129,7 @@ class Message {
 	 *
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Snappy\Message
+	 * @return \SnappySdk\Message
 	 */
 	public function addBcc($address, $name = null)
 	{
@@ -142,7 +142,7 @@ class Message {
 	 * @param  string  $type
 	 * @param  string  $address
 	 * @param  string  $name
-	 * @return \Snappy\Message
+	 * @return \SnappySdk\Message
 	 */
 	protected function addRecipient($type, $address, $name)
 	{
