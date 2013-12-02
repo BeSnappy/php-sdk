@@ -21,9 +21,11 @@ Now you're ready to start retrieving information from Snappy!
 ## List Of Available Methods
 
 - getAccounts
+- search($query, $page = 1)
 - getMailboxes($accountId)
 - getDocuments($accountId)
 - getStaff($accountId)
+- getContact($accountId, $idOrEmailAddress)
 - getWaitingTickets($mailboxId)
 - getTicketDetails($ticketId)
 - getTicketNotes($ticketId)
