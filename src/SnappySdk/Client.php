@@ -42,6 +42,19 @@ class Client {
 	}
 
 	/**
+	 * Get all of the mailboxes you have access to.
+	 *
+	 * @param  int  $accountId
+	 * @param  string  $query
+	 * @param  int  $page
+	 * @return array
+	 */
+	public function search($accountId, $query, $page = 1)
+	{
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/search?query='.$query.'&page='.$page));
+	}
+
+	/**
 	 * Get all of the mailboxes for a given account ID.
 	 *
 	 * @param  int  $accountId
@@ -60,7 +73,7 @@ class Client {
 	 */
 	public function getDocuments($accountId)
 	{
-		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/documents'));	
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/documents'));
 	}
 
 	/**
@@ -72,6 +85,18 @@ class Client {
 	public function getStaff($accountId)
 	{
 		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/staff'));
+	}
+
+	/**
+	 * Get a contact for the given account ID and contact ID or e-mail address.
+	 *
+	 * @param  int  $accountId
+	 * @param  string|int  $idOrEmail
+	 * @return array
+	 */
+	public function getContact($accountId, $idOrEmail)
+	{
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/contacts/'.$idOrEmail));
 	}
 
 	/**
@@ -104,7 +129,7 @@ class Client {
 	 */
 	public function getTicketNotes($ticketId)
 	{
-		return $this->send($this->getHttp()->get($this->url.'ticket/'.$ticketId.'/notes'));	
+		return $this->send($this->getHttp()->get($this->url.'ticket/'.$ticketId.'/notes'));
 	}
 
 	/**
