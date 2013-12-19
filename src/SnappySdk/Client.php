@@ -111,6 +111,17 @@ class Client {
 	}
 
 	/**
+	 * Get all of the tickets for a given mailbox ID that are assigned to you.
+	 *
+	 * @param  int  $mailboxId
+	 * @return array
+	 */
+	public function getYourTickets($mailboxId)
+	{
+		return $this->send($this->getHttp()->get($this->url.'mailbox/'.$mailboxId.'/yours'));
+	}
+
+	/**
 	 * Get the details for a given ticket ID.
 	 *
 	 * @param  int  $ticketId
