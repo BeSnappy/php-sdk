@@ -80,6 +80,13 @@ class Message {
 	public $tags = array();
 
 	/**
+	 * Indicates if the message should remain in "waiting" state.
+	 *
+	 * @var bool
+	 */
+	public $keepWaiting = false;
+
+	/**
 	 * Indicates if the message is a "system" message.
 	 */
 	public $system = false;

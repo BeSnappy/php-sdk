@@ -197,6 +197,7 @@ class Client {
 		$payload['attachments'] = array();
 		$payload['tags'] = $message->tags;
 		$payload['scope'] = $message->scope ?: 'public';
+		$payload['status'] = $message->keepWaiting ? 'waiting' : null;
 
 		if ($message->system)
 		{

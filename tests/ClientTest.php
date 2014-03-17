@@ -19,6 +19,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 			'attachments' => array(),
 			'tags' => array('foo', 'bar'),
 			'scope' => 'public',
+			'status' => null,
 			'to' => array(array('name' => 'Taylor Otwell', 'address' => 'taylor@userscape.com')),
 		)))->andReturn(m::mock('Guzzle\Http\Message\Request'));
 
