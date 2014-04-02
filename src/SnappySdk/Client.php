@@ -347,6 +347,203 @@ class Client {
 	}
 
 	/**
+	 * Get the FAQs for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @return array
+	 */
+	public function getFaqs($accountId)
+	{
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/faqs'));
+	}
+
+	/**
+	 * Get the FAQs for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  string  $title
+	 * @param  string  $url
+	 * @return array
+	 */
+	public function createFaq($accountId, $title, $url = 'faq')
+	{
+		$payload = json_encode(compact('title', 'url'));
+
+		return $this->send($this->getHttp()->post(
+			$this->url.'account/'.$accountId.'/faqs', null, $payload
+		));
+	}
+
+	/**
+	 * Update the FAQs for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  string  $title
+	 * @param  string  $url
+	 * @return array
+	 */
+	public function updateFaq($accountId, $faqId, $title, $url = 'faq')
+	{
+		$payload = json_encode(compact('title', 'url'));
+
+		return $this->send($this->getHttp()->put(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId, null, $payload
+		));
+	}
+
+	/**
+	 * Delete the given FAQ.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @return array
+	 */
+	public function deleteFaq($accountId, $faqId)
+	{
+		return $this->sendPlain($this->getHttp()->delete(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId
+		));
+	}
+
+	/**
+	 * Get the FAQs topics for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @return array
+	 */
+	public function getFaqTopics($accountId, $faqId)
+	{
+		return $this->send($this->getHttp()->get(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics')
+		);
+	}
+
+	/**
+	 * Create an FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  string  $topic
+	 * @param  int  $order
+	 * @return array
+	 */
+	public function createFaqTopic($accountId, $faqId, $topic, $order = 0)
+	{
+		$payload = json_encode(compact('topic', 'order'));
+
+		return $this->send($this->getHttp()->post(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics', null, $payload
+		));
+	}
+
+	/**
+	 * Update the FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @param  string  $topic
+	 * @param  int  $order
+	 * @return array
+	 */
+	public function updateFaqTopic($accountId, $faqId, $topicId, $topic, $order = 0)
+	{
+		$payload = json_encode(compact('topic', 'order'));
+
+		return $this->send($this->getHttp()->put(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId, null, $payload
+		));
+	}
+
+	/**
+	 * Delete the FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @return array
+	 */
+	public function deleteFaqTopic($accountId, $faqId, $topicId)
+	{
+		return $this->send($this->getHttp()->delete(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId
+		));
+	}
+
+	/**
+	 * Get the FAQs topic questions for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @return array
+	 */
+	public function getTopicQuestions($accountId, $faqId, $topicId)
+	{
+		return $this->send($this->getHttp()->get(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId.'/questions')
+		);
+	}
+
+	/**
+	 * Update the FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @param  string  $question
+	 * @param  string  $answer
+	 * @return array
+	 */
+	public function createTopicQuestion($accountId, $faqId, $topicId, $question, $answer)
+	{
+		$payload = json_encode(compact('question', 'answer'));
+
+		return $this->send($this->getHttp()->post(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId.'/questions', null, $payload
+		));
+	}
+
+	/**
+	 * Update the FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @param  int  $questionId
+	 * @param  string  $question
+	 * @param  string  $answer
+	 * @return array
+	 */
+	public function updateTopicQuestion($accountId, $faqId, $topicId, $questionId, $question, $answer)
+	{
+		$payload = json_encode(compact('question', 'answer'));
+
+		return $this->send($this->getHttp()->put(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId.'/questions/'.$questionId, null, $payload
+		));
+	}
+
+	/**
+	 * Update the FAQ topic for the given account.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @param  int  $questionId
+	 * @param  string  $question
+	 * @param  string  $answer
+	 * @return array
+	 */
+	public function deleteTopicQuestion($accountId, $faqId, $topicId, $questionId)
+	{
+		return $this->send($this->getHttp()->delete(
+			$this->url.'account/'.$accountId.'/faqs/'.$faqId.'/topics/'.$topicId.'/questions/'.$questionId
+		));
+	}
+
+	/**
 	 * Send the request and return the JSON payload as an array.
 	 *
 	 * @param  \Guzzle\Http\Message\Request  $request
