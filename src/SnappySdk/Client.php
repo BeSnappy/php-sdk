@@ -526,6 +526,25 @@ class Client {
 	}
 
 	/**
+	 * Update the FAQ topics for the given question.
+	 *
+	 * @param  int  $accountId
+	 * @param  int  $faqId
+	 * @param  int  $topicId
+	 * @param  int  $questionId
+	 * @param  array  $topics
+	 * @return array
+	 */
+	public function syncQuestionTopics($accountId, $faqId, $topicId, $questionId, array $topics)
+	{
+		$payload = json_encode(compact('topics'));
+
+		return $this->send($this->getHttp()->put(
+			$this->url.'account/'.$accountId.'/questions/'.$questionId.'/topics', null, $payload
+		));
+	}
+
+	/**
 	 * Update the FAQ topic for the given account.
 	 *
 	 * @param  int  $accountId
