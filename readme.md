@@ -38,6 +38,18 @@ Now you're ready to start retrieving information from Snappy!
 - deleteWallComment($accountId, $postId, $commentId)
 - likeWallPost($accountId, $postId)
 - unlikeWallPost($accountId, $postId)
+- getFaqs($accountId)
+- createFaq($accountId, $title, $url = 'faq')
+- updateFaq($accountId, $faqId, $title, $url = 'faq')
+- deleteFaq($accountId, $faqId)
+- getFaqTopics($accountId, $faqId)
+- createFaqTopic($accountId, $faqId, $topic, $order = 0)
+- updateFaqTopic($accountId, $faqId, $topic, $order = 0)
+- deleteFaqTopic($accountId, $faqId, $topicId)
+- getTopicQuestions($accountId, $faqId, $topicId)
+- createTopicQuestion($accountId, $faqId, $topicId, $question, $answer)
+- updateTopicQuestion($accountId, $faqId, $topicId, $questionId, $question, $answer)
+- deleteTopicQuestion($accountId, $faqId, $topicId, $questionId)
 
 ## Sending Messages
 
