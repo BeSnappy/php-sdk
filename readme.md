@@ -39,6 +39,7 @@ Now you're ready to start retrieving information from Snappy!
 - likeWallPost($accountId, $postId)
 - unlikeWallPost($accountId, $postId)
 - getFaqs($accountId)
+- searchFaqs($accountId, $query, $page = 1)
 - createFaq($accountId, $title, $url = 'faq')
 - updateFaq($accountId, $faqId, $title, $url = 'faq')
 - deleteFaq($accountId, $faqId)
