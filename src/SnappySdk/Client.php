@@ -42,7 +42,7 @@ class Client {
 	}
 
 	/**
-	 * Get all of the mailboxes you have access to.
+	 * Search a given account's tickets.
 	 *
 	 * @param  int  $accountId
 	 * @param  string  $query
@@ -355,6 +355,19 @@ class Client {
 	public function getFaqs($accountId)
 	{
 		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/faqs'));
+	}
+
+	/**
+	 * Search a given account's FAQs.
+	 *
+	 * @param  int  $accountId
+	 * @param  string  $query
+	 * @param  int  $page
+	 * @return array
+	 */
+	public function searchFaqs($accountId, $query, $page = 1)
+	{
+		return $this->send($this->getHttp()->get($this->url.'account/'.$accountId.'/faqs/search?query='.$query.'&page='.$page));
 	}
 
 	/**
