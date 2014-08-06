@@ -21,6 +21,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 			'scope' => 'public',
 			'status' => null,
 			'to' => array(array('name' => 'Taylor Otwell', 'address' => 'taylor@userscape.com')),
+			'contact_extras' => array('paid' => true),
 		)))->andReturn(m::mock('Guzzle\Http\Message\Request'));
 
 		$message = new SnappySdk\Message;
@@ -29,6 +30,7 @@ class ClientTest extends PHPUnit_Framework_TestCase {
 		$message->subject = 'Subject';
 		$message->message = 'Message';
 		$message->tags = array('foo', 'bar');
+		$message->setContactExtras(array('paid' => true));
 		$message->addTo('taylor@userscape.com', 'Taylor Otwell');
 
 		$client->sendMessage($message);

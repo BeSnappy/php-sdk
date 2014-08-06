@@ -223,6 +223,8 @@ class Client {
 			}
 		}
 
+		$payload['contact_extras'] = $message->contactExtras;
+
 		return json_encode($payload);
 	}
 

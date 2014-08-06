@@ -45,6 +45,13 @@ class Message {
 	public $from;
 
 	/**
+	 * Set the extra attributes for the contact.
+	 *
+	 * @var array
+	 */
+	public $contactExtras = null;
+
+	/**
 	 * The recipients of the message.
 	 *
 	 * @var array
@@ -103,6 +110,19 @@ class Message {
 		if (is_null($name)) $name = $address;
 
 		$this->from = compact('name', 'address');
+
+		return $this;
+	}
+
+	/**
+	 * Set the extra attributes for the contacts.
+	 *
+	 * @param  array  $extras
+	 * @return \SnappySdk\Message
+	 */
+	public function setContactExtras(array $extras = array())
+	{
+		$this->contactExtras = $extras;
 
 		return $this;
 	}
