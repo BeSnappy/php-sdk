@@ -20,7 +20,7 @@ Now you're ready to start retrieving information from Snappy!
 
 ## List Of Available Methods
 
-These are the available methods to interact with the [Snappy API](https://github.com/BeSnappy/api-docs).
+These are the available SDK client methods to interact with the [Snappy API](https://github.com/BeSnappy/api-docs).
 
 - getAccounts 
 - search($query, $page = 1)
