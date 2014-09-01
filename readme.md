@@ -20,7 +20,9 @@ Now you're ready to start retrieving information from Snappy!
 
 ## List Of Available Methods
 
-- getAccounts
+These are the available methods to interact with the [Snappy API](https://github.com/BeSnappy/api-docs).
+
+- getAccounts 
 - search($query, $page = 1)
 - getMailboxes($accountId)
 - getDocuments($accountId)
