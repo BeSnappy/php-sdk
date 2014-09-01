@@ -18,9 +18,38 @@ Now you're ready to start retrieving information from Snappy!
 
 	$accounts = $client->getAccounts();
 
-## List Of Available Methods
+## Sending Messages
 
-These are the available SDK client methods to interact with the [Snappy API](https://github.com/BeSnappy/api-docs).
+To send a message to your Snappy account, create a new `Message` instance, and use the `sendMessage` method on the client:
+
+	$message = new SnappySdk\Message;
+
+	$message->mailboxId = 3;
+	$message->setFrom('foo@bar.com', 'John Smith');
+	$message->subject = 'Hello World';
+	$message->message = 'This is my message!';
+
+	$nonce = $client->sendMessage($message);
+
+To send an outgoing message, a `staffId` must be specified, as well as the recipient address:
+
+	$message = new SnappySdk\Message;
+
+	$message->mailboxId = 3;
+	$message->staffId = 3;
+	$message->addTo('foo@bar.com', 'John Smith');
+	$message->subject = 'Hello World';
+	$message->message = 'This is my message!';
+
+	$nonce = $client->sendMessage($message);
+
+If you are attaching a message to an existing thread, add the ticket "nonce" to the message:
+
+	$message->ticketId = $nonce;
+
+## Available Methods
+
+These are the available SDK client methods. They all interact with the [Snappy API](https://github.com/BeSnappy/api-docs).
 
 - getAccounts 
 - search($query, $page = 1)
@@ -54,31 +83,3 @@ These are the available SDK client methods to interact with the [Snappy API](htt
 - updateTopicQuestion($accountId, $faqId, $topicId, $questionId, $question, $answer)
 - deleteTopicQuestion($accountId, $faqId, $topicId, $questionId)
 
-## Sending Messages
-
-To send a message to your Snappy account, create a new `Message` instance, and use the `sendMessage` method on the client:
-
-	$message = new SnappySdk\Message;
-
-	$message->mailboxId = 3;
-	$message->setFrom('foo@bar.com', 'John Smith');
-	$message->subject = 'Hello World';
-	$message->message = 'This is my message!';
-
-	$nonce = $client->sendMessage($message);
-
-To send an outgoing message, a `staffId` must be specified, as well as the recipient address:
-
-	$message = new SnappySdk\Message;
-
-	$message->mailboxId = 3;
-	$message->staffId = 3;
-	$message->addTo('foo@bar.com', 'John Smith');
-	$message->subject = 'Hello World';
-	$message->message = 'This is my message!';
-
-	$nonce = $client->sendMessage($message);
-
-If you are attaching a message to an existing thread, add the ticket "nonce" to the message:
-
-	$message->ticketId = $nonce;
